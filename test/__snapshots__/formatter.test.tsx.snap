@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Basic paragraphs 1`] = `
+Array [
+  <p>
+    One paragraph.
+  </p>,
+  <p>
+    Two paragraph
+  </p>,
+]
+`;
+
+exports[`Bold across paragraph break 1`] = `
+Array [
+  <p>
+    What happens if we &lt;b&gt;bold across
+  </p>,
+  <p>
+    paragraphs&lt;/b&gt;.
+  </p>,
+]
+`;
+
+exports[`Bold and italics 1`] = `
+<p>
+  Some text in 
+  <strong>
+    bold
+  </strong>
+   vs 
+  <i>
+    italics
+  </i>
+  .
+</p>
+`;
+
+exports[`No paragraphs 1`] = `
+<p>
+  This is some text.
+</p>
+`;
+
+exports[`No paragraphs for single newlines 1`] = `
+<p>
+  This is all
+  <br />
+  One paragraph.
+</p>
+`;
+
+exports[`Processor to replace 'no' with <input> 1`] = `
+Array [
+  <p>
+    You should see 
+    <input />
+     
+    <input />
+     in here.
+  </p>,
+  <p>
+    And 
+    <input />
+     
+    <input />
+     in here.
+  </p>,
+  <p>
+    
+    <input />
+    
+  </p>,
+]
+`;
+
+exports[`Three newlines should break a paragraph then trim 1`] = `
+Array [
+  <p>
+    One paragraph.
+  </p>,
+  <p>
+    Start of new trimmed paragraph.
+  </p>,
+]
+`;

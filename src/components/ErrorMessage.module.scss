@@ -1,0 +1,21 @@
+span.error
+{
+    display: block;
+    padding: 0.5em;
+    padding-left: 0;
+    background-color: rgb(66, 0, 0);
+    color: white;
+    margin-bottom: 0.5em;
+    border: 1px solid red;
+    border-radius: 5px;
+
+    &::before
+    {
+        content: 'ERROR';
+        background-color: darkred;
+        border-radius: inherit;
+        padding: 0.5em;
+        margin-right: 0.5em;
+        color: red;
+    }
+}

@@ -1,0 +1,37 @@
+table.variables
+{
+    padding: 1em;
+    font-family: monospace;
+    font-size: 14pt;
+
+    th
+    {
+        background-color: grey;
+    }
+
+    tr:hover td
+    {
+        border: 1px solid white;
+
+        &:first-child
+        {
+            background-color: grey;
+        }
+    }
+
+    td
+    {
+        padding: 0 0.5em;
+        border: 1px solid transparent;
+    }
+
+    td:first-child
+    {
+        background-color: darkgrey;
+    }
+    
+    td:nth-child(n+2)
+    {
+        background-color: green;
+    }
+}
