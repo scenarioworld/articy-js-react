@@ -36,6 +36,11 @@
   "name": "articy-node-react",
   "author": "Brook Warner Jensen <brook@scenarioworld.ca>",
   "module": "dist/articy-node-react.esm.js",
+  "homepage": "https://github.com/brwarner/articy-node-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brwarner/articy-node-react"
+  },
   "size-limit": [
     {
       "path": "dist/articy-node-react.cjs.production.min.js",
