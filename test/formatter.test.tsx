@@ -1,4 +1,4 @@
-import { formatDisplayText, FormatProcessor } from '../formatter';
+import { formatDisplayText, FormatProcessor } from '../src/formatter';
 import renderer from 'react-test-renderer';
 import React from 'react';
 
