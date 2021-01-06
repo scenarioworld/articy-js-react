@@ -18,13 +18,14 @@ export function useDatabase<ResultType>(
 ): ResultType | undefined {
   // Get database
   const db = useContext(DatabaseContext);
-  if (!db) {
-    return undefined;
-  }
 
   // Run callback using the memo hook. Dependencies are supplied plus the DB changing
-  // eslint-disable-next-line
-    return useMemo(() => callback(db), [db?.guid, callback, ...deps]);
+  return useMemo(() => (db ? callback(db) : undefined), [
+    db,
+    callback,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    ...deps,
+  ]);
 }
 
 /** Queries the database for an object and memorizes the result */
@@ -37,8 +38,7 @@ export function useDatabaseObject<ObjectType>(
   const db = useContext(DatabaseContext);
 
   // Run the lookup in a memo book. Dependencies are suppled plus the DB changing.
-  // eslint-disable-next-line
-    return useMemo(() => db?.getObject<ObjectType>(id, type), [db?.guid, id, type]);
+  return useMemo(() => db?.getObject<ObjectType>(id, type), [db, id, type]);
 }
 
 /** Queries the database for an object and memorizes a common set of CSS properties for it */
@@ -48,8 +48,10 @@ export function useDatabaseObjectCSS(id: Id): CSSProperties {
   const db = useContext(DatabaseContext);
 
   // Run the lookup in a memo book. Dependencies are suppled plus the DB changing.
-  // eslint-disable-next-line
-    const props = useMemo(() => db?.getProperties<ArticyObjectProps & Partial<ColorProps>>(id), [db?.guid, id]);
+  const props = useMemo(
+    () => db?.getProperties<ArticyObjectProps & Partial<ColorProps>>(id),
+    [db, id]
+  );
 
   // Return CSS properties from color
   return toCSSProperties(props?.Color);

@@ -1781,6 +1781,13 @@ array.prototype.flatmap@^1.2.3:
     es-abstract "^1.18.0-next.1"
     function-bind "^1.1.1"
 
+articy-node@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/articy-node/-/articy-node-0.3.0.tgz#f1b250381ed65929518948d8a8fad522698f60bd"
+  integrity sha512-uCGVG4Krp4OjQfpflrBG0j6jrgtzCOczquMVI0aqYrcRGgCF6BYj342WmHNKqYZgf/TXhGqnSjHr8mwePmHlRw==
+  dependencies:
+    uuid "^8.3.1"
+
 asn1.js@^5.2.0:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/asn1.js/-/asn1.js-5.4.1.tgz#11a980b84ebb91781ce35b0fdc2ee294e3783f07"
@@ -9371,6 +9378,11 @@ uuid@^3.3.2:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
+
+uuid@^8.3.1:
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
+  integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
 v8-compile-cache@^2.0.3:
   version "2.2.0"
