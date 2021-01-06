@@ -7,3 +7,4 @@ export { VariableDebugView } from './components/VariableDebugView';
 export * from './DatabaseContext';
 export * from './formatter';
 export * from './util';
+export * from './branches';
