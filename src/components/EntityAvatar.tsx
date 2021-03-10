@@ -2,19 +2,26 @@ import React from 'react';
 import { useDatabase } from '../DatabaseContext';
 import { Entity } from 'articy-node';
 
-interface Properties {
+type Properties = {
   entityId: string;
-}
+} & Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src'>;
 
-export function EntityAvatar(props: Properties): JSX.Element {
+export function EntityAvatar({
+  entityId,
+  ...imgProps
+}: Properties): JSX.Element {
   const speaker: Entity | undefined = useDatabase(
-    db => db.getObject(props.entityId, Entity),
-    [props.entityId]
+    db => db.getObject(entityId, Entity),
+    [entityId]
   );
   const assetId = speaker?.properties.PreviewImage.Asset;
   const path = useDatabase(db => db.getAssetFilename(assetId), [assetId]);
 
   return (
-    <img src={path ?? ''} alt={speaker?.properties.DisplayName ?? 'MISSING'} />
+    <img
+      src={path ?? ''}
+      alt={speaker?.properties.DisplayName ?? 'MISSING'}
+      {...imgProps}
+    />
   );
 }
