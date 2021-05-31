@@ -36,6 +36,41 @@ exports[`Bold and italics 1`] = `
 </p>
 `;
 
+exports[`Bold in italics 1`] = `
+<p>
+  Here are some 
+  <i>
+    <strong>
+      bold in italics
+    </strong>
+  </i>
+</p>
+`;
+
+exports[`Bold in italics with edges 1`] = `
+<p>
+  Here are some 
+  <i>
+    edged 
+    <strong>
+      bold in italics
+    </strong>
+     edged
+  </i>
+</p>
+`;
+
+exports[`Italics in bold 1`] = `
+<p>
+  Here are some 
+  <strong>
+    <i>
+      italics in bold
+    </i>
+  </strong>
+</p>
+`;
+
 exports[`No paragraphs 1`] = `
 <p>
   This is some text.

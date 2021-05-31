@@ -38,6 +38,24 @@ test('Bold across paragraph break', () => {
   ).toMatchSnapshot();
 });
 
+test('Italics in bold', () => {
+  expect(
+    render('Here are some <b><i>italics in bold</i></b>')
+  ).toMatchSnapshot();
+});
+
+test('Bold in italics', () => {
+  expect(
+    render('Here are some <i><b>bold in italics</b></i>')
+  ).toMatchSnapshot();
+});
+
+test('Bold in italics with edges', () => {
+  expect(
+    render('Here are some <i>edged <b>bold in italics</b> edged</i>')
+  ).toMatchSnapshot();
+});
+
 const replaceNo: FormatProcessor = function(fragment) {
   const processed = fragment
     .split('no')

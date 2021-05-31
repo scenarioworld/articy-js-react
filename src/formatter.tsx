@@ -12,11 +12,20 @@ export type FormatProcessor = (fragment: string) => FormatResult;
 const FormattingRegex = /<(\w)>(.*?)<\/\1>/g;
 
 function applyFormatting(snippet: string, processor: FormatProcessor) {
-  // Scan for
+  // Collect all regex matches
+  const matches: RegExpExecArray[] = [];
+  while (true) {
+    const match = FormattingRegex.exec(snippet);
+    if (match === null) {
+      break;
+    }
+    matches.push(match);
+  }
+
+  // Iterate through matches and process
   let index = 0;
-  let match: RegExpExecArray | null = null;
   const elements: FormatResult[] = [];
-  while ((match = FormattingRegex.exec(snippet)) !== null) {
+  for (const match of matches) {
     // Add prelude
     const startIndex = match.index;
     if (index !== startIndex) {
@@ -25,7 +34,7 @@ function applyFormatting(snippet: string, processor: FormatProcessor) {
 
     // Get match info
     const formattingType = match[1];
-    const contents = processor(match[2]);
+    const contents = applyFormatting(match[2], processor);
 
     // Apply style element
     switch (formattingType) {
@@ -38,7 +47,7 @@ function applyFormatting(snippet: string, processor: FormatProcessor) {
     }
 
     // Move index
-    index = FormattingRegex.lastIndex;
+    index = match.index + match[0].length;
   }
 
   // Push end
