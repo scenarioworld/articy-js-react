@@ -111,11 +111,13 @@ function VariableView({
     <tr>
       <td>{id}</td>
       {setVariable !== undefined && (
-        <EditableVariable
-          id={parent + '.' + id}
-          value={value}
-          setVariable={setter}
-        />
+        <td>
+          <EditableVariable
+            id={parent + '.' + id}
+            value={value}
+            setVariable={setter}
+          />
+        </td>
       )}
       {setVariable === undefined && <td>{writeVariable(value)}</td>}
     </tr>
@@ -145,6 +147,7 @@ function NamespaceView({
         <VariableView
           parent={id}
           id={key}
+          key={key}
           value={namespace[key]}
           setVariable={setVariable ? setter : undefined}
         />
@@ -161,6 +164,7 @@ export function VariableDebugView(props: Properties) {
         {Object.keys(props.store).map(key => (
           <NamespaceView
             id={key}
+            key={key}
             namespace={props.store[key]}
             setVariable={props.setVariable}
           />
