@@ -1,4 +1,4 @@
-# articy-node-react
+# ArticyJS React
 
 React components and hooks to use with [articy-js](https://www.npmjs.com/package/articy-js).
 
