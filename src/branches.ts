@@ -6,7 +6,7 @@ import {
   resolveBranch,
   resolveBranches,
   ResolvedBranch,
-} from 'articy-node';
+} from 'articy-js';
 import { useContext, useMemo } from 'react';
 import { DatabaseContext } from './DatabaseContext';
 

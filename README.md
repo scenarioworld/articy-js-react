@@ -1,12 +1,12 @@
-# articy-node-react
+# ArticyJS React
 
-React components and hooks to use with [articy-node](https://www.npmjs.com/package/articy-node).
+React components and hooks to use with [articy-js](https://www.npmjs.com/package/articy-js).
 
 ## Components
 
 ```js
 
-// In order for these components to work, they must be inside a DatabaseProvider with an Articy Database set (see the articy-node package)
+// In order for these components to work, they must be inside a DatabaseProvider with an Articy Database set (see the articy-js package)
 <DatabaseContext.Provider value={db}></DatabaseContext.Provider>
 
 // Prints the text contained in a flow node, automatically formatting into paragraphs, line breaks, bold/italics, etc.

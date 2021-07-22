@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDatabase } from '../DatabaseContext';
-import { Entity } from 'articy-node';
+import { Entity } from 'articy-js';
 
 type Properties = {
   entityId: string;
@@ -15,7 +15,7 @@ export function EntityAvatar({
     [entityId]
   );
   const assetId = speaker?.properties.PreviewImage.Asset;
-  const path = useDatabase(db => db.getAssetFilename(assetId), [assetId]);
+  const path = useDatabase(db => db.getAssetFilenameFromId(assetId), [assetId]);
 
   return (
     <img

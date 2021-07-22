@@ -1,9 +1,9 @@
-import { Id, TextProps } from 'articy-node';
+import { Id, TextProps } from 'articy-js';
 import React from 'react';
 import { ErrorMessage } from './ErrorMessage';
 import { useDatabase } from '../DatabaseContext';
 import { formatDisplayText, FormatProcessor } from '../formatter';
-import { BaseFlowNode } from 'articy-node';
+import { BaseFlowNode } from 'articy-js';
 
 interface FlowProperties {
   key?: string;
