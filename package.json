@@ -36,10 +36,10 @@
   "name": "articy-js-react",
   "author": "Brook Warner Jensen <brook@scenarioworld.ca>",
   "module": "dist/articy-js-react.esm.js",
-  "homepage": "https://github.com/brwarner/articy-js-react",
+  "homepage": "https://github.com/scenarioworld/articy-js-react",
   "repository": {
     "type": "git",
-    "url": "https://github.com/brwarner/articy-js-react"
+    "url": "https://github.com/scenarioworld/articy-js-react"
   },
   "size-limit": [
     {
