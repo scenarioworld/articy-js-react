@@ -1,6 +1,6 @@
-import { ArticyObjectProps, ColorProps, Id } from 'articy-node';
+import { ArticyObjectProps, ColorProps, Id } from 'articy-js';
 import React, { CSSProperties, useContext, useMemo } from 'react';
-import { Database, ArticyObjectCreator } from 'articy-node';
+import { Database, ArticyObjectCreator } from 'articy-js';
 import { toCSSProperties } from './util';
 
 export const DatabaseContext = React.createContext<Database | undefined>(
@@ -49,10 +49,10 @@ export function useDatabaseObjectCSS(id: Id): CSSProperties {
 
   // Run the lookup in a memo book. Dependencies are suppled plus the DB changing.
   const props = useMemo(
-    () => db?.getProperties<ArticyObjectProps & Partial<ColorProps>>(id),
+    () => db?.getModel<ArticyObjectProps & Partial<ColorProps>>(id),
     [db, id]
   );
 
   // Return CSS properties from color
-  return toCSSProperties(props?.Color);
+  return toCSSProperties(props?.Properties.Color);
 }

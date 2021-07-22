@@ -1,7 +1,7 @@
-import { Id } from 'articy-node';
+import { Id } from 'articy-js';
 import React from 'react';
 import { useDatabase } from '../DatabaseContext';
-import { Asset } from 'articy-node';
+import { Asset } from 'articy-js';
 
 type Properties = {
   /** Asset ID that points to an image */

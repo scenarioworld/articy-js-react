@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Variable, VariableNamespace, VariableStore } from 'articy-node';
+import { Variable, VariableNamespace, VariableStore } from 'articy-js';
 import styles from './VariableDebugView.module.scss';
 import { useDebounce } from 'react-use';
 

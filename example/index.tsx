@@ -1,7 +1,7 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Variable, VariableStore } from 'articy-node';
+import { Variable, VariableStore } from 'articy-js';
 import { VariableDebugView } from "../src/components/VariableDebugView";
 import { useState } from 'react';
 import { useCallback } from 'react';

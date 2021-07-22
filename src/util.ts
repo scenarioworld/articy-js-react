@@ -1,4 +1,4 @@
-import { ColorData } from 'articy-node';
+import { ColorData } from 'articy-js';
 import { CSSProperties } from 'react';
 
 /**

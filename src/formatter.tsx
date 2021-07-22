@@ -2,7 +2,7 @@ import {
   DisplayNameProps,
   MenuTextProps,
   TechnicalNameProps,
-} from 'articy-node';
+} from 'articy-js';
 import React from 'react';
 
 type FormatResult = string | JSX.Element | (string | JSX.Element)[];
