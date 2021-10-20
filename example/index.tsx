@@ -27,7 +27,7 @@ const App = () => {
     setVariables(newVariables);
   }, [variables]);
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   return (
     <div>

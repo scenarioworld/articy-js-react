@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { Variable, VariableNamespace, VariableStore } from 'articy-js';
 import styles from './VariableDebugView.module.scss';
 import { useDebounce } from '../react-use';
@@ -124,26 +130,61 @@ function VariableView({
   );
 }
 
+function MakeFilter(
+  ns: string,
+  filter: string | undefined
+): (name: string) => boolean {
+  const trimmedFilter = (filter?.trim() ?? '').trim();
+  ns = ns.toLowerCase();
+
+  return name => {
+    name = name.toLowerCase();
+
+    // Empty filter = always true
+    if (trimmedFilter === '') {
+      return true;
+    }
+
+    // If there's a dot
+    if (trimmedFilter.indexOf('.') !== -1) {
+      // Split the filter
+      const [nsFilter, nameFilter] = trimmedFilter.split('.');
+
+      // Check NS and name
+      return ns.indexOf(nsFilter) !== -1 && name.indexOf(nameFilter) !== -1;
+    } else {
+      // Check NS or name for filter
+      return (
+        ns.indexOf(trimmedFilter) !== -1 || name.indexOf(trimmedFilter) !== -1
+      );
+    }
+  };
+}
+
 function NamespaceView({
   id,
   namespace,
   setVariable,
+  filter,
 }: {
   id: string;
   namespace: VariableNamespace;
   setVariable?: SetVariableFn;
+  filter?: string;
 }) {
   const setter = useCallback(
     (variable: string, value: Variable) => setVariable?.(id, variable, value),
     [setVariable, id]
   );
 
+  const keys = Object.keys(namespace).filter(MakeFilter(id, filter));
+
   return (
     <>
       <tr>
         <th>{id}</th>
       </tr>
-      {Object.keys(namespace).map(key => (
+      {keys.map(key => (
         <VariableView
           parent={id}
           id={key}
@@ -158,18 +199,39 @@ function NamespaceView({
 
 /** Displays debug variable state */
 export function VariableDebugView(props: Properties) {
+  const [filter, setFilter] = useState<string>();
+  const onFilterChanged = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => setFilter(e.target.value),
+    []
+  );
+
   return (
-    <table className={styles.variables}>
-      <tbody>
-        {Object.keys(props.store).map(key => (
-          <NamespaceView
-            id={key}
-            key={key}
-            namespace={props.store[key]}
-            setVariable={props.setVariable}
-          />
-        ))}
-      </tbody>
-    </table>
+    <>
+      <table className={styles.variables}>
+        <thead>
+          <tr>
+            <th colSpan={2}>
+              <input
+                type="text"
+                placeholder="Filter variables..."
+                onChange={onFilterChanged}
+                style={{ width: '100%' }}
+              />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.keys(props.store).map(key => (
+            <NamespaceView
+              id={key}
+              key={key}
+              namespace={props.store[key]}
+              setVariable={props.setVariable}
+              filter={filter}
+            />
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }
